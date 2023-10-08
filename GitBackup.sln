@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitBackup.Data", "Data\GitB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7F81CBA2-8BEF-4177-8E21-49316F1BB6B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitBackup.Common.Utilities", "Common\GitBackup.Common.Utilities\GitBackup.Common.Utilities.csproj", "{E0CCFB6A-5146-4249-9760-DC90D6CE6B12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,7 @@ Global
 		{F3C2C953-3A78-4581-9FF0-232D330A711F} = {0ECD5FB2-A114-4756-A1F3-6BB5B3EDCB62}
 		{6D344F6C-6629-441E-A349-0479D980D4B2} = {F1A72920-2B1E-4541-A41C-9C93BBEC691B}
 		{C502AB69-65AF-4905-9995-DA834A39BC21} = {9A4E6EA7-EDE8-4DE0-8725-408BFAA7991A}
+		{E0CCFB6A-5146-4249-9760-DC90D6CE6B12} = {7F81CBA2-8BEF-4177-8E21-49316F1BB6B6}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F3C2C953-3A78-4581-9FF0-232D330A711F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -39,5 +42,9 @@ Global
 		{C502AB69-65AF-4905-9995-DA834A39BC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C502AB69-65AF-4905-9995-DA834A39BC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C502AB69-65AF-4905-9995-DA834A39BC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0CCFB6A-5146-4249-9760-DC90D6CE6B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0CCFB6A-5146-4249-9760-DC90D6CE6B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0CCFB6A-5146-4249-9760-DC90D6CE6B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0CCFB6A-5146-4249-9760-DC90D6CE6B12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
