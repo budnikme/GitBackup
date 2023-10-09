@@ -11,9 +11,10 @@ public class GitHubService : IGitHubService
 
     public GitHubService(IOptions<GitHubSettings> settings)
     {
-        client = new GitHubClient(new ProductHeaderValue(Constants.GitHubApplicationName));
-        var tokenAuth = new Credentials(settings.Value.AccessToken);
-        client.Credentials = tokenAuth;
+        client = new GitHubClient(new ProductHeaderValue(Constants.GitHubApplicationName))
+        {
+            Credentials = new Credentials(settings.Value.AccessToken)
+        };
     }
 
     public async Task<IEnumerable<Repository>> GetPrivateRepositories()
