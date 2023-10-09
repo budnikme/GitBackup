@@ -11,11 +11,15 @@
         <tbody>
         <ng-container *ngFor="let repository of repositories">
             <tr>
-                <td>{{repository.name}}</td>
+                <td>{{ repository.name }}</td>
                 <td>{{ repository.lastBackupDate ?? '-' }}</td>
                 <td>
                     <button class="btn btn-primary" (click)="backup(repository.id)">Backup</button>
-                    <button *ngIf="repository.lastBackupDate" class="btn btn-outline-primary" (click)="restore(repository.id)">Restore</button>
+                    <button *ngIf="repository.lastBackupDate"
+                            class="btn btn-outline-primary"
+                            (click)="restore(repository.id)">
+                        Restore
+                    </button>
                 </td>
             </tr>
         </ng-container>

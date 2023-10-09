@@ -1,5 +1,5 @@
-﻿using GitBackup.Business.Core.GitHub.Models;
-using GitBackup.Business.Core.GitHub.Services;
+﻿using GitBackup.Business.Core.Repositories.Models;
+using GitBackup.Business.Core.Repositories.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitBackup.Web.Api.Controllers;
@@ -8,23 +8,17 @@ namespace GitBackup.Web.Api.Controllers;
 [ApiController]
 public class RepositoriesController : ControllerBase
 {
-    private readonly IGitHubService gitHubService;
+    private readonly IRepositoryService repositoryService;
 
-    public RepositoriesController(IGitHubService gitHubService)
+    public RepositoriesController(IRepositoryService repositoryService)
     {
-        this.gitHubService = gitHubService;
+        this.repositoryService = repositoryService;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<RepositoryModel>>> Get()
+    public async Task<ActionResult<IEnumerable<RepositoryModel>>> GetRepositories()
     {
-        var repositories = await gitHubService.GetPrivateRepositories();
-        var result = repositories.Select(r => new RepositoryModel
-        {
-            Id = r.Id,
-            Name = r.Name
-        });
-        return Ok(result);
+        var repositories = await repositoryService.GetRepositories();
+        return Ok(repositories);
     }
-
 }

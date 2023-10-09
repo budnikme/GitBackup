@@ -1,4 +1,4 @@
-﻿namespace GitBackup.Business.Core.GitHub.Models;
+﻿namespace GitBackup.Business.Core.Repositories.Models;
 
 public class RepositoryModel
 {

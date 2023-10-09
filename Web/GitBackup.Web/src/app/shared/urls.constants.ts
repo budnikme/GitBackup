@@ -6,4 +6,6 @@ const buildUrl = (...resources: (string | number)[]): string => [WEB_API_URL]
 
 export const URLS = {
   REPOSITORIES: buildUrl('repositories'),
+  BACKUPS: (repositoryId: number) => buildUrl('backups', repositoryId),
+  RESTORE: (repositoryId: number) => buildUrl('backups', repositoryId, 'restore')
 };

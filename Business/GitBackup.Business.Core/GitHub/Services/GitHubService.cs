@@ -20,21 +20,27 @@ public class GitHubService : IGitHubService
     public async Task<IEnumerable<Repository>> GetPrivateRepositories()
     {
         var repositories = await client.Repository.GetAllForCurrent();
-        return repositories.Where(s => s.Private).ToList();
+        return repositories.Where(s => s.Private);
     }
 
-    public async Task<IReadOnlyList<Issue>?> GetIssuesForRepository(long repositoryId)
+    public async Task<IEnumerable<Issue>> GetIssuesForRepository(long repositoryId)
     {
         return await client.Issue.GetAllForRepository(repositoryId);
     }
 
-    public async Task<Repository> CreateRepository(string name)
+    public async Task<string> GetRepositoryNameById(long repositoryId)
     {
-        var repository = new NewRepository(name);
+        var repository = await client.Repository.Get(repositoryId);
+        return repository.Name;
+    }
+
+    public async Task<Repository> CreatePrivateRepository(string name)
+    {
+        var repository = new NewRepository(name) { Private = true };
         return await client.Repository.Create(repository);
     }
 
-    public async Task<Issue> CreateIssue(long repositoryId, string title, string body)
+    public async Task<Issue> CreateIssue(long repositoryId, string title, string? body)
     {
         var issue = new NewIssue(title) { Body = body };
         return await client.Issue.Create(repositoryId, issue);

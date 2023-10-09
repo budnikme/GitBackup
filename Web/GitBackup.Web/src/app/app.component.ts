@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GitHubService} from "./git-hub.service";
+import {ToastrService} from 'ngx-toastr';
+import {BackupsService} from './backups.service';
+import {RepositoriesService} from './repositories.service';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +11,46 @@ import {GitHubService} from "./git-hub.service";
 export class AppComponent implements OnInit {
   public repositories: IRepository[] = [];
 
-  constructor(private github: GitHubService) { }
+  constructor(
+    private repositoriesService: RepositoriesService,
+    private backupsService: BackupsService,
+    private toastrService: ToastrService) {
+  }
 
   public ngOnInit(): void {
-    this.github.getRepositories()
+    this.fetchRepositories();
+  }
+
+  public backup(repositoryId: number): void {
+    this.backupsService.create(repositoryId)
+      .subscribe({
+        next: () => {
+          this.toastrService.success('Backup created');
+          this.fetchRepositories();
+        },
+        error: () => {
+          this.toastrService.error('Backup creation failed');
+        }
+      });
+  }
+
+  public restore(repositoryId: number): void {
+    this.backupsService.restore(repositoryId)
+      .subscribe({
+        next: () => {
+          this.toastrService.success('Backup restored');
+          this.fetchRepositories();
+        },
+        error: () => {
+          this.toastrService.error('Backup restore failed');
+        }
+      });
+  }
+
+  private fetchRepositories(): void {
+    this.repositoriesService.getRepositories()
       .subscribe(repositories => {
         this.repositories = repositories;
-    });
+      });
   }
-
-  public backup(id: number): void {
-    console.log(id);
-  }
-
-  public restore(id: number): void {
-  }
-
-
 }

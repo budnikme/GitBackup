@@ -7,12 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Crypto.AES" Version="1.0.4" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
       <PackageReference Include="Octokit" Version="8.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Common\GitBackup.Common.Utilities\GitBackup.Common.Utilities.csproj" />
+      <ProjectReference Include="..\..\Data\GitBackup.Data\GitBackup.Data.csproj" />
     </ItemGroup>
 
 </Project>

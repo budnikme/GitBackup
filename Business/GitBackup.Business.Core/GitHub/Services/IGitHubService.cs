@@ -6,9 +6,11 @@ public interface IGitHubService
 {
     Task<IEnumerable<Repository>> GetPrivateRepositories();
 
-    Task<IReadOnlyList<Issue>?> GetIssuesForRepository(long repositoryId);
+    Task<IEnumerable<Issue>> GetIssuesForRepository(long repositoryId);
 
-    Task<Repository> CreateRepository(string name);
+    Task<string> GetRepositoryNameById(long repositoryId);
 
-    Task<Issue> CreateIssue(long repositoryId, string title, string body);
+    Task<Repository> CreatePrivateRepository(string name);
+
+    Task<Issue> CreateIssue(long repositoryId, string title, string? body);
 }
